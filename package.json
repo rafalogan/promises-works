@@ -1,0 +1,31 @@
+{
+  "name": "promises-works",
+  "version": "1.0.0",
+  "description": "Exemple based on live of Erick Wendel Channel",
+  "main": "index.js",
+  "scripts": {
+    "start": "node src/",
+    "dev": "npx nodemon src/",
+    "test:dev": "npx mocha -w test/**",
+    "test": "npx mocha --parallel --exit test/**",
+    "test:cov": "npx nyc --check-coverage --instrument npm t"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/rafalogan/promises-works.git"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/rafalogan/promises-works/issues"
+  },
+  "homepage": "https://github.com/rafalogan/promises-works#readme",
+  "devDependencies": {
+    "chai": "^4.2.0",
+    "mocha": "^8.2.1",
+    "nodemon": "^2.0.7",
+    "nyc": "^15.1.0",
+    "sinon": "^9.2.3"
+  }
+}
