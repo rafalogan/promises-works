@@ -5,11 +5,11 @@ Exemple based on live of Erick Wendel Channel
 
 This project simulates how to axios works with the objective to study the js Promises.
 
-###Requires
+### Requires
 
 Nodejs V15.6.0 or later.
 
-###Command's
+### Command's
 
 run this command's in or terminal:
 
@@ -29,4 +29,36 @@ run this command's in or terminal:
     "test": "npx mocha --parallel --exit test/**",
     "test:cov": "npx nyc --check-coverage --instrument npm t"
   },
+```
+### Notes 
+
+In the file ``request.test.js`` in test:
+
+```javascript
+it('should return ok when promise time is ok', async () => {
+		const expected = { ok: 'ok'};
+		sandbox.stub(request, request.get.name)
+			.callsFake( async () => {
+				await new Promise(resolve => setTimeout(resolve));
+				return expected;
+			});
+
+		const call = () => request.makeRequest({url: 'https://testing.com', method: 'get', timeout});
+
+		await assert.doesNotReject(call());
+		assert.deepStrictEqual(await call(), expected);
+	});
+```
+can replace ``.callsFake(...)`` to ``.resolve(...)`` how to example:
+```javascript
+it('should return ok when promise time is ok', async () => {
+		const expected = { ok: 'ok'};
+		sandbox.stub(request, request.get.name)
+			.resolves(expected);
+
+		const call = () => request.makeRequest({url: 'https://testing.com', method: 'get', timeout});
+
+		await assert.doesNotReject(call());
+		assert.deepStrictEqual(await call(), expected);
+	});
 ```
