@@ -6,10 +6,11 @@ const {describe, it, before, afterEach} = require('mocha');
 const {createSandbox} = require('sinon');
 
 const Request = require('../../src/app/request');
-const ErrorHandler = require("../../src/app/errorHandler");
+const ErrorHandler = require("../../src/app/handlers/errorHandler");
 
-describe('#test', () => {
-	const timeout = 15;
+const timeout = 15;
+
+describe('#Request tests', () => {
 	let sandbox;
 	let request;
 	let errorHandler;

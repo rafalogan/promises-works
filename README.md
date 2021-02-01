@@ -1,7 +1,8 @@
 # promises-works
 Exemple based on live of Erick Wendel Channel
 
-[Live #4 - O que você não sabia sobre Promises em Javascript - Pré #SemanaJSExpert](https://www.youtube.com/watch?v=40kiPpRoH0A)
+[Live #4 - O que você não sabia sobre Promises em Javascript - Pré #SemanaJSExpert](https://www.youtube.com/watch?v=40kiPpRoH0A)  
+[Live #5 - Generators e Iterators na prática - Pré #SemanaJSExpert​](https://www.youtube.com/watch?v=w_UE-wTZPpM)
 
 This project simulates how to axios works with the objective to study the js Promises.
 
@@ -62,3 +63,27 @@ it('should return ok when promise time is ok', async () => {
 		assert.deepStrictEqual(await call(), expected);
 	});
 ```
+
+The generators will be used to work with demanded data
+we need to use the function with * and use yield to return demanded data  
+When we will use the yield { 0 }  
+the return can be { done: false, value: 0 }
+
+```javascript
+async * getPaginated({url, page}) {
+		const result = await this.handleRequest({url, page});
+		const lastId = result[result.length - 1]?.tid ?? 0;
+		
+		//WARNING, more of 1M requests
+		if(lastId === 0) return;
+	}
+```
+example.:
+``` javascript
+const r = getPaginated();
+r.next() -> { done: false, value: 0 }
+r.next() -> { done: true, value: 0 }
+```
+
+when we want to delegate an execution (don't return valule, delegate!)  
+user yield*  = function;

@@ -1,4 +1,4 @@
-const ErrorHandler = require('./app/errorHandler');
+const ErrorHandler = require('./app/handlers/errorHandler');
 const Request = require('./app/request');
 
 const PERIOD = 2000
@@ -8,7 +8,8 @@ const request = new Request({errorHandler});
 const urls = [
 	{ url: 'https://www.mercadobitcoin.net/api/BTC/ticker/'},
 	{ url: 'https://www.naoexiste.net'},
-	{ url: 'https://www.mercadobitcoin.net/api/BTC/orderbook/'}
+	{ url: 'https://www.mercadobitcoin.net/api/BTC/orderbook/'},
+	{ url: 'https://www.mercadobitcoin.net/api/BTC/trades/?id=3706'},
 ]
 
 const scheduler = async () => {
